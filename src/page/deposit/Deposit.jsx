@@ -8,22 +8,20 @@ const Deposit = () => {
 
   const handleDeposit = async () => {
     try {
-      const response = await axios.post(`http://localhost:8080/deposit/${accountNumber}/${amount}`);
+      const response = await   depositMoney(accountNumber,amount);
       setMessage("Deposit successful!");
     } catch (error) {
       setMessage("Error: " + (error.response?.data?.message || "Transaction failed"));
     }
   };
+   useEffect(()=>{
+          Deposit()
+      },[])
 
   return (
     <div className="container">
       <h2>Deposit Money</h2>
-      <input
-        type="text"
-        placeholder="Enter Account Number"
-        value={accountNumber}
-        onChange={(e) => setAccountNumber(e.target.value)}
-      />
+      
       <input
         type="number"
         placeholder="Enter Amount"

@@ -8,13 +8,15 @@ const Withdraw = () => {
 
   const handleWithdraw = async () => {
     try {
-      const response = await axios.post(`http://localhost:8080/withdraw/${accountNumber}/${amount}`);
+      const response = await   WithdrawMoney(accountNumber,amount);
       setMessage("Withdrawal successful!");
     } catch (error) {
       setMessage("Error: " + (error.response?.data?.message || "Transaction failed"));
     }
   };
-
+  useEffect(()=>{
+    Withdrawq()
+},[])
   return (
     <div className="container">
       <h2>Withdraw Money</h2>

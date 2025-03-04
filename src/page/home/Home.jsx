@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -34,7 +35,7 @@ export default function Home() {
         <button className="btn-success" onClick={() => handleNavigation("/deposit")}>
           Deposit
         </button>
-        <button className="btn-success" onClick={() => handleNavigation("/check-balance")}>
+        <button className="btn-success" onClick={() => handleNavigation("/balance")}>
           Check Balance
         </button>
       </div>

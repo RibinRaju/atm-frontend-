@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./page/home/Home";
-import Balance from "./page/balance/balance"; 
-import Deposit from "./page/deposit/deposit";
-import Withdraw from "./page/withdraw/withdraw";
+import Balance from "./page/balance/Balance"; 
+import Deposit from "./page/deposit/Deposit";
+import Withdraw from "./page/withdraw/Withdraw";
 import "./App.css";
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/withdraw" element={<Withdraw />} />
                     <Route path="/deposit" element={<Deposit />} />
-                    <Route path="/balance" element={<Balance />} />  
+                    <Route path="/balance/:accountNumber" element={<Balance />} />  
                 </Routes>
             </main>
             <footer className="app-footer">
