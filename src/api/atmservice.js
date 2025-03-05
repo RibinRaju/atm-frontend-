@@ -6,7 +6,9 @@ const BASE_URL = "http://localhost:8080/api";
 export const checkBalance = async (accountNumber) => {
     try {
         const response = await axios.get(`${BASE_URL}/balance/${accountNumber}`);
+        console.log("API Response:", response.data);
         return response.data;
+        
     } catch (error) {
         console.error("Failed to fetch account balance:", error);
         throw new Error("Failed to fetch account balance");

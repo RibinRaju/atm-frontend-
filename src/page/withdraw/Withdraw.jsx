@@ -21,12 +21,6 @@ const Withdraw = () => {
     <div className="container">
       <h2>Withdraw Money</h2>
       <input
-        type="text"
-        placeholder="Enter Account Number"
-        value={accountNumber}
-        onChange={(e) => setAccountNumber(e.target.value)}
-      />
-      <input
         type="number"
         placeholder="Enter Amount"
         value={amount}

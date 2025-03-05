@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { checkBalance } from "../../api/atmservice";
 import { useParams } from "react-router-dom";
 
@@ -15,9 +14,11 @@ const Balance = () => {
         }
 
         try {
-            const response = await checkBalance(accountNumber);
-            setBalance(response.data);
-            setError("");
+            console.log("Fetching balance for account:", accountNumber);
+            const balanceAmount = await checkBalance(accountNumber); // Expecting a number
+            console.log("Balance received:", balanceAmount);
+            setBalance(balanceAmount);  
+            setError(""); // Clear errors if successful
         } catch (err) {
             console.error("Error fetching balance:", err);
             setError("Failed to fetch balance. Please check the account number and try again.");
@@ -25,18 +26,21 @@ const Balance = () => {
         }
     };
 
-    useEffect(()=>{
-        fetchBalance()
-    },[])
+    useEffect(() => {
+        if (accountNumber) {
+            fetchBalance();
+        }
+    }, [accountNumber]);
 
     return (
         <div className="container">
             <h2>Check Account Balance</h2>
-           
+            <p>Account Number: {accountNumber}</p>
+            
             {balance !== null ? (
-                <p>Balance: <strong>Rs{balance}</strong></p>
+                <p>Balance: <strong>Rs {balance}</strong></p>
             ) : (
-                error && <p className="error">{error}</p>
+                <p className="error">{error}</p>
             )}
         </div>
     );
